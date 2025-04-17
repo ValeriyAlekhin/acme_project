@@ -6,6 +6,10 @@ SECRET_KEY = 'django-insecure-m&$lzdzkutvrbr5vt=jpm)7#g7cken_tk%($ty+w902n7wb#=e
 
 DEBUG = True
 
+# Теперь Django будет работать с «английским»
+# форматом даты — и виджет с удовольствием отобразит значение
+USE_L10N = False
+
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -17,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -29,9 +34,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# По умолчанию эта константа пуста, но довольно часто в проектах 
+# можно увидеть, что она переопределена. Например, можно 
+# добавить в настройки проекта константу MEDIA_URL = 'media/'
+# Теперь файлы будут доступны по другой ссылке:
+# Было:
+# http://127.0.0.1:8000/birthdays_images/image_2.png
+# Стало:
+# http://127.0.0.1:8000/media/birthdays_images/image_2.png 
+
 ROOT_URLCONF = 'acme_project.urls'
 
 TEMPLATES_DIR = BASE_DIR / 'templates'
+
+MEDIA_ROOT = BASE_DIR / 'media'
 
 TEMPLATES = [
     {
